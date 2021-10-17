@@ -1,0 +1,52 @@
+<meta title=" ADICIONAR CONDUTOR" iconCls="user_add_32" width="330" height="auto">
+<div class="dialog_form">
+    <form id="form_condutor" action="server.php?op=condutores_set" method="post">
+        <div class="fiels">
+            <select id="combobox_condutores" label="Nome Completo" name="nome" required="true" class="easyui-combobox" style="width: 100%"> </select>
+        </div>                                                              
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask="999.999.999-99" label="CPF" name="cpf" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div>        
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask="99999999999" label="Habilitação" name="habilitacao" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div>         
+        <div class="fiels">
+            <input class="easyui-textbox" label="Categoria" name="catedoria" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div>
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask="99/99/9999" label="Validade" name="validade" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div> 
+        <input type="hidden" name="condutor_cliente" id="condutor_cliente" value=""> 
+        <input type="hidden" name="condutor_contrato" id="condutor_contrato" value="">         
+
+        <input type="hidden" name="condutores_id">
+        <div class="dialog_buttons">
+            <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
+            <a onclick="dialog_save(dialog_id,'#form_condutor','#datagrid_condutores')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
+        </div>        
+    </form>                 
+</div>
+
+<script type="text/javascript">
+
+    $('#combobox_condutores').combobox({
+        valueField:'condutores_id',
+        textField:'nome',
+        url:'server.php?json_rows=condutores',
+        onChange:function(value){
+            $('#form_condutor').form('load','server.php?op=condutores_get&id='+value);            
+        }
+    })    
+
+    $('#condutor_contrato').val(
+        $('.contrato_id').textbox('getValue')
+    )
+
+    $('#condutor_cliente').val(
+        $('.combobox_cliente').textbox('getValue')
+    )    
+
+    $('#form_condutor').form('load','server.php?op=condutores_get&id='+dialog_id);
+
+
+</script>

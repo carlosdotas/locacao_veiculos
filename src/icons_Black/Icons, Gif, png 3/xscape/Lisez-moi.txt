@@ -1,0 +1,15 @@
+XScape 1.36 par Cyriaque (Cisoun) Skrapits
+	Cisoun Icones Stock 1
+	Créés avec Inkscape et The Gimp
+	© Cyriaque Skrapits, 2006
+
+Les fichiers vectoriels et gimp ne sont pas fournis avec cette bibliothèque d'icônes. 
+Ces icônes sont livrées en 64x64, 128x128, 256x256 et 512x512 pixels.
+Si vous souhaitez les transformer en fichier icône plutôt qu'en fichier PNG
+ou changer leur taille, je vous conseille d'utiliser The Gimp comme logiciel gratuit.
+Si vous souhaitez des icônes plus grande que 512x512, je peux vous les
+agrandir si ce sont des images créées sous Inkscape (référez-vous à index.txt).
+Attention si vous changez ces images ou que vous les redistribuez, merci de 
+bien respecter les droits d'auteur et de citer mon nom en tant que créateur.
+Pour toutes demandes ou remarques, adressez-vous à 
+<cysoun@hotmail.com>.

@@ -1,0 +1,20 @@
+<div class="easyui-layout" fit="true">
+	<div data-options="region:'center'"  border=0 >
+		<table class="datagrid_condutores" border="0">
+		</table>
+	</div>
+</div>
+<script type="text/javascript">
+	$('.datagrid_condutores').datagrid({
+	    form:"modulos/condutores/form.html",
+	    tableMysql:'condutores', 			
+	    url:'server.php?json=condutores',	
+	    id:'datagrid_condutores',
+	    columns:[[
+	        {field:'nome',title:'Nome',width:100},
+	        {field:'cpf',title:'CPF',width:100},
+	        {field:'habilitacao',title:'Habilitacao',width:100,align:'center'}
+	    ]]
+	});
+
+</script>

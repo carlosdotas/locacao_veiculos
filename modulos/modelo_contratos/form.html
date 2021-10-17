@@ -1,0 +1,43 @@
+<meta title=" ADICIONAR MODELOS DE CONTRATOS" iconCls="add_32" width="80%" height="90%">
+<div id='layout_documento' class="easyui-layout" fit="true">
+    <form id="form_modelo_contratos" action="server.php"  method="post">
+        <div class="dialog_form" data-options="region:'north'" style="overflow: none;">
+            <div class="fiels">
+                <input class="easyui-textbox" label="Nome do Contrato" name="nome_contrato" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+            </div>
+        </div>
+        <div data-options="region:'center'" >
+            <div class="easyui-panel" id="layout_center" fit="true">
+                <textarea id="editor1" class="modelo_documentos" name="contrato"></textarea>
+            </div>
+        </div>
+        <div data-options="region:'south'" style="height: 38px;" >
+            <input type="hidden" name="salvar" value="modelo_contratos">
+            <input type="hidden" name="modelo_contratos_id">
+            <div class="dialog_buttons">
+                <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
+                <a onclick="dialog_save(dialog_id,'#form_modelo_contratos','#datagrid_modelo_contratos')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
+            </div>     
+        </div>
+    </form>
+</div>
+<script type="text/javascript">    
+    
+    ////////////////////////////////////////////////
+
+    $( document ).ready(function() {
+        var layout_documento = $('#layout_center').panel()[0].clientHeight;
+
+        CKEDITOR.replace('editor1', {
+          language: 'pt-BR',
+          height:layout_documento+'px'
+        });
+    });
+
+    $('#dialog_'+dialog_id).dialog({
+        maximizable:true,
+        maximized:true
+    })
+
+    $('#form_modelo_contratos').form('load','server.php?buscar_mysql=modelo_contratos&col=modelo_contratos_id&ref='+dialog_id);
+</script>

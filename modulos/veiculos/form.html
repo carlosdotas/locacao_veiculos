@@ -1,0 +1,55 @@
+<meta title=" ADICIONAR VEÍCULOS" iconCls="car_add_32" width="400">
+<div class="dialog_form">
+    <form id="form_veiculos" action="server.php"  method="post">
+        <div class="fiels">
+            <input class="easyui-textbox" label="Placa" name="placa" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>     
+        <div class="fiels">
+            <input class="easyui-textbox" label="Marca" name="marca" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-textbox" label="Modelo" name="modelo" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>  
+        <div class="fiels">
+            <input class="easyui-textbox" label="Renavam" name="renavam" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>  
+        <div class="fiels">
+            <input class="easyui-textbox" label="Chassi" name="chassi" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>                  
+        <div class="fiels">
+            <input class="easyui-textbox" label="Ano" name="ano" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>       
+        <div class="fiels">
+            <input class="easyui-textbox" label="Estado Geral" name="estado" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>             
+        <div class="fiels">
+            <input class="easyui-textbox" label="Cor" name="cor" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>                                                                       
+        <div class="fiels">
+            <input class="easyui-textbox"  label="Classe" name="classe" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-numberbox"  label="Diária" name="diaria" decimalSeparator="," precision="2" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>
+        <div class="fiels">
+            <input class="easyui-numberbox"  label="Valor do Bem" name="valor" decimalSeparator="," precision="2" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-textbox"  label="Kilometragem" name="km" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div> 
+        <div class="fiels">
+            <input class="easyui-textbox"  label="Detalhes" name="detalhes" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>  
+
+        <input type="hidden" name="salvar" value="veiculos">
+        <input type="hidden" name="veiculos_id">
+        <div class="dialog_buttons">
+            <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
+            <a onclick="dialog_save(dialog_id,'#form_veiculos','#datagrid_veiculos')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
+        </div>        
+    </form>                 
+</div>
+
+<script type="text/javascript">    
+    $('#form_veiculos').form('load','server.php?buscar_mysql=veiculos&col=veiculos_id&ref='+dialog_id);
+</script>

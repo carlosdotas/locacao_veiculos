@@ -1,0 +1,40 @@
+<meta title=" ADICIONAR CLIENTE" iconCls="user_add_32" width="325" height="314">
+<div class="dialog_form">
+    <form id="form_cliente" action="server.php"  method="post">
+        <div class="fiels">
+            <input class="easyui-textbox" label="Nome Completo" name="nome" required="true" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>                                                              
+        <div class="fiels">
+            <input class="easyui-textbox" label="CPF/CNPJ" name="cpf_cnpj" required="true" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>     
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask='(99) 9 9999-9999' label="Telefone" name="telefone" required="true" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>          
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask="99999999999" label="HABILITAÇÃO" name="habilitacao"  label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-textbox" label="CLASSE HABILITAÇÃO" name="classe_habilitacao" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-maskedbox" mask="99/99/9999" label="VALIDADE HABILITAÇÃO" name="validade_habilitacao" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+                                                              
+        <div class="fiels">
+            <input class="easyui-textbox"  label="Endereço" name="endereco" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>
+        <div class="fiels">
+            <input class="easyui-textbox"  label="Cidade" name="cidade" label data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <input type="hidden" name="salvar" value="clientes">
+        <input type="hidden" name="clientes_id">
+        <div class="dialog_buttons">
+            <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
+            <a onclick="dialog_save(dialog_id,'#form_cliente','#datagrid_clientes')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
+        </div>        
+    </form>                 
+</div>
+
+<script type="text/javascript">    
+    $('#form_cliente').form('load','server.php?buscar_mysql=clientes&col=clientes_id&ref='+dialog_id);
+</script>

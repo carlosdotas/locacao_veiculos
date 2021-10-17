@@ -1,0 +1,38 @@
+Index des icônes
+
+Réalisé | Editeur [I]nkscape, [G]imp
+------
+[X][G] CD
+[X][I] Clé USB
+[X][I] Configuration
+[X][I] Dessin
+[X][I] Disque dur
+[X][I] Disquette
+[X][I] Dossiers
+[X][I] Dossier Ma musique
+[X][I] Dossier Mes documents
+[X][I] Dossier Mes images
+[X][I] Dossier Mes vidéos
+[X][I] Dossier partagé
+[X][G] DVD
+[X][I] Ecran
+[X][I] Fichier
+[X][I] Fichier HTML
+[X][I] Fichier image
+[X][I] Fichier PDF
+[X][I] Fichier PHP
+[X][I] Fichier son
+[X][I] Fichier texte
+[X][I] Fichier vidéo
+[X][I] Happy Tux
+[X][I] Home - Le fichier Inkscape a été perdu!
+[X][I] Lecteur CD
+[X][I] Lecteur DVD
+[X][I] Mozilla Firefox
+[X][I] Mozilla Thunderbird
+[X][I] MSN
+[X][I] Ordinateur
+[X][I] Poste de travail
+[X][I] Poubelle pleine
+[X][I] Poubelle vide
+[X][I] Zip

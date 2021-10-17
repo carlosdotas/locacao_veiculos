@@ -1,0 +1,32 @@
+<meta title=" DADOS DA EMPRESA" iconCls="user_add_32" width="300">
+<div class="dialog_form">
+    <form id="form_empresa" action="server.php"  method="post">
+        <div class="fiels">
+            <input class="easyui-textbox" prompt="Nome da Empresa" name="nome" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>                                                              
+        <div class="fiels">
+            <input class="easyui-textbox" prompt="CNPJ" name="cnpj" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>        
+        <div class="fiels">
+            <input class="easyui-textbox" prompt="Telefone" name="telefone" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>
+        <div class="fiels">
+            <input class="easyui-textbox"  prompt="E-mail" name="email" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>                                                 
+        <div class="fiels">
+            <input class="easyui-textbox"  prompt="Endereço" name="endereco" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
+        </div>      
+
+        <input type="hidden" name="salvar" value="empresa">
+        <input type="hidden" name="empresa_id" value="1">
+
+        <div class="dialog_buttons">
+            <a href="#" onclick="dialog_close('')" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
+            <a onclick="dialog_save(1,'#form_empresa','#datagrid_empresas')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
+        </div>        
+    </form>                 
+</div>
+
+<script type="text/javascript">    
+    $('#form_empresa').form('load','server.php?buscar_mysql=empresa&col=empresa_id&ref=1');
+</script>

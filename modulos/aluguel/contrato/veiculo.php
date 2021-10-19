@@ -1,80 +1,109 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:80px">
+<table class="table">
     <tbody>
         <tr>
-            <th colspan="3" style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">VEÍCULO</strong>
+            <th colspan="3" >
+            VEÍCULO
             </th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-                <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
+            <td class="tdBody" width="60%">
+                <table >
                     <tbody>
+
                         <tr>
-                            <td style="vertical-align:top; width:50%">
-                                <span style="font-size:10px">Placa:</span><br>
-                                <b style="font-size:12px"><?php echo $veiculo[placa] ?></b>
+                            <td style="width:25%">
+                                <label>Placa:</label>
+                                <div class="field"><?php echo $veiculo[placa] ?></div>
                             </td>
-                            <td style="vertical-align:top; width:50%">
+                               
+                            <td style="width:25%">
 
-                                <span style="font-size:10px">Modelo:</span><br>
-                                <b style="font-size:12px"><?php echo $veiculo[modelo] ?></b>
+                                <label>Marca:</label>
+                                <div class="field"><?php echo $veiculo[marca] ?></div>
+                            </td>                            
+                            <td style="width:25%">
+
+                                <label>Modelo:</label>
+                                <div class="field"><?php echo $veiculo[modelo] ?></div>
                             </td>
+                            <td style="width:25%">
+                                <label>Ano:</label>
+                                <div class="field"><?php echo $veiculo[ano] ?></div>
+                            </td>                         
+                        </tr>
+                        <tr>
+                            <td >
 
-                            <td style="vertical-align:top; width:50%">
-
-                                <span style="font-size:10px">Cor:</span><br>
-                                <b style="font-size:12px"><?php echo $veiculo[cor] ?></b>
+                                <label>Cor:</label>
+                                <div class="field"><?php echo $veiculo[cor] ?></div>
 
                             </td>
-                            <td style="vertical-align:top; width:50%">
+                            <td >
 
-                                <span style="font-size:10px">Runavam:</span><br>
-                                <b style="font-size:12px"><?php echo $veiculo[renavam] ?></b>
+                                <label>Renavam:</label>
+                                <div class="field"><?php echo $veiculo[renavam] ?></div>
 
                             </td> 
-                            </tr>
+                            <td colspan="2">
+
+                                <label>Chassi:</label>
+                                <div class="field"><?php echo $veiculo[chassi] ?></div>
+
+                            </td>                             
+                        </tr>
                     </tbody>
                 </table>
             </td>
-            <td style="border:2px solid black; ">
-                <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
+            <td class="tdBody" style="border-left:1px solid black; width: 20%;padding:0">
+                <table >
                     <tbody>
                         <tr>
-                            <td style="vertical-align:top; width:50%">
-                                <span style="font-size:10px">Saída:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[data_saida] ?></b><br>
+                            <td colspan="3" style="border-bottom:1px solid black; background-color: #eee;" >SAÍDA</td>
+                        </tr>                          
+                        <tr>
+                            <td style="width:50%">
+                                <label>Data:</label>
+                                <div class="field"><?php echo $aluguel[data_saida] ?></div>
                             </td>
-                            <td style="vertical-align:top; width:50%">
-                                <span style="font-size:10px">Tanque:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[tanque_saida] ?></b><br>
+                            <td style="width:50%">
+                                <label>Tanque:</label>
+                                <div class="field"><?php echo $aluguel[tanque_saida] ?>%</div>
                             </td>
-                            <td style="vertical-align:top; width:50%">
-                                <span style="font-size:10px">KM:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[km_saida] ?></b>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label>KM:</label>
+                                <div class="field"><?php echo $aluguel[km_saida] ?></div>
                             </td>                      
                         </tr>
                     </tbody>
                 </table>
             </td>
-            <td style="border:2px solid black; ">
-            <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
-                <tbody>
-                    <tr>
-                        <td style="vertical-align:top; width:50%">
-                            <span style="font-size:10px">Retorno:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[data_retorno] ?></b>
-                        </td>
-                        <td style="vertical-align:top; width:50%">
-                            <span style="font-size:10px">Tanque Retorno:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[tanque_retorno] ?></b>
-                        </td>                        
-                        <td style="vertical-align:top; width:50%">
-                            <span style="font-size:10px">KM Retorno:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[km_retorno] ?></b>
-                        </td>                      
-                    </tr>
-                </tbody>
-            </table>
+            <td class="tdBody" style="border-left:1px solid black; width: 20%;padding:0;">
+                <table>
+                    <tbody>
+               
+                        <tr>
+                            <td colspan="3" style="border-bottom:1px solid black;background-color: #eee;" >RETORNO</td>
+                        </tr> 
+                        <tr>                                                    
+                            <td style="width:50%">
+                                <label>Data:</label>
+                                <div class="field"><?php echo $aluguel[data_retorno] ?></div>
+                            </td>
+                            <td style="width:50%">
+                                <label>Tanque:</label>
+                                <div class="field"><?php echo $aluguel[tanque_retorno] ?>%</div>
+                            </td>                        
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label>KM:</label>
+                                <div class="field"><?php echo $aluguel[km_retorno] ?></div>
+                            </td>                      
+                        </tr>
+                    </tbody>
+                </table>
             </td>                        
         </tr>
     </tbody>

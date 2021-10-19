@@ -1,28 +1,20 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:100px">
+<table style="height:150px" class="table">
     <tbody>
         <tr>
-            <th colspan="3" style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">CAUÇÃO</strong>
-            </th>
+            <th>CAUÇÃO</th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-                <table cellspacing="0" style=" border-collapse:collapse; width:100.0%">
-                    <tbody>
-                        <tr>
-         
-                            <td colspan="3" style="vertical-align:top; width:50%">
-
-                                <span style="font-size:10px">Valor:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[caucao] ?></b><br>
-
-                            </td>
-                        </tr>                                      
-
-                    </tbody>
-                </table>
+            <td class="tdBody">
+                <label>Valor:</label>
+                <div class="field">
+                    R$ <?php 
+                    if($aluguel[caucao]){
+                        echo $aluguel[caucao];
+                    }else{
+                        echo '00.00';
+                    } ?>
+                </div>
             </td>
-                                  
         </tr>
     </tbody>
 </table>

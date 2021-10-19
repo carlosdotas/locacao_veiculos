@@ -16,13 +16,58 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" media="screen" href="">
+    <style type="text/css">
+        @media print {
+           body {
+              -webkit-print-color-adjust: exact;
+           }
+        }    
+        .table{
+            border: 1px solid black; 
+            border-spacing: 0;
+            border-collapse: collapse;  
+            vertical-align: top;              
+        }
+        .table th{
+            border: 1px solid black; 
+            height: 1px; 
+            background-color: #ddd;
+            border-width: 1px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 2px;
+        }     
+        .table td{
+            /*border: 1px solid black;*/
+            text-align: left;
+            padding: 3px;
+            vertical-align: top;
+        }
+        .table label{
+            font-weight: lighter;
+            font-size:10px;
+        }  
+        .table .field{
+            font-size:12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }          
+
+        .titles{
+            text-align: center; 
+            font-size: 16px;
+            font-weight: bold;
+            padding-top: 5px;
+        }
+    </style>
 </head>
 <body>
 
 <?php include('cabecalho.php'); ?>
 
-<div style="text-align: center;">
-    <b>CONTRATO DE LOCA&Ccedil;&Atilde;O DE VE&Iacute;CULOS</b>
+<div class="titles">
+    CONTRATO DE LOCAÇÃO DE VEÍCULOS
 <div>
 
 <table cellspacing="0" style=" width:100%">
@@ -54,13 +99,12 @@
             <td style="border:0px solid black; width: 60%">
                 <?php include('condutores.php'); ?>
             </td>
-            <td style="border:0px solid black;">
-                <?php include('prorrogacao.php'); ?>
+            <td style="border:0px solid black; ">
+                <?php include('servicos_add.php'); ?>
             </td>
         </tr>
     </tbody>
 </table>
-
 <table cellspacing="0" style=" width:100%">
     <tbody>
         <tr>
@@ -70,40 +114,20 @@
         </tr>
     </tbody>
 </table>
-
 <table cellspacing="0" style=" width:100%">
     <tbody>
         <tr>
-            <td style="border:0px solid black; width: 60%">
-                <?php include('itens_add.php'); ?>
-            </td>
-            <!--
-            <td style="border:0px solid black;">
-                <?php include('servico_entrega.php'); ?>
-            </td>
-            -->
-        </tr>
-    </tbody>
-</table>
-
-<table cellspacing="0" style=" width:100%">
-    <tbody>
-        <tr>
-            <td style="border:0px solid black; width: 60%">
+            <td >
                 <?php include('franquia_protecao.php'); ?>
             </td>
-            <td style="border:0px solid black;">
-                <?php include('causao.php'); ?>
-            </td>
         </tr>
     </tbody>
 </table>
+
+<div class="titles">RETORNO E FECHAMENTO</div>
 
 <table cellspacing="0" style="width:100%">
     <tbody>
-        <tr>
-            <th colspan="2">RETORNO E FECHAMENTO</th>
-        </tr>
         <tr>
             <td style="border:0px solid black; width: 50%">
                 <?php include('dados_devolucao.php'); ?>
@@ -141,6 +165,7 @@
     @page  
     { 
         margin: 3px;  
+        -webkit-print-color-adjust: exact; 
     } 
 
     html, body{

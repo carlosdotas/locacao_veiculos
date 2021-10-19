@@ -1,7 +1,8 @@
 <?php
 $_SERVER['modulos_config'][] = array( 
 	'name'	=> 'Serviços',
-	'icon'	=> 'modulos/servicos/imgs/icon.png',
+	'icon'	=> 'src/icons_new/setting_tools.png',
+	'iconCls' => 'setting_tools_32',
 	'id'	=> 'computer',
 	'width'	=> '95%',
 	'height'=> '95%',

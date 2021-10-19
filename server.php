@@ -7,9 +7,45 @@ list_modulos();
 //Rodas do sistema
 ////////////////////////////////////////////////
 if($_GET['op'] == 'modulos_config'){	
-	echo json_encode($_SERVER['modulos_config']);
+
+	$saida[modulos] = $_SERVER['modulos_config'];
+	$saida[session] = $_SESSION;
+
+	include_once('wallpapers/index.php');
+	$saida[wallpapers] =  wallpapers();
+
+	echo json_encode($saida);
 }
 
+////////////////////////////////////////////////
+if($_GET['op'] == 'logar'){
+	
+	$error['error']['login'] = 'Login ou senha Inválido';
+
+	$buscar_mysql = buscar_mysql('users',$_GET['login'],'login');
+
+	if($buscar_mysql['senha']){
+		if($buscar_mysql['senha']==$_GET['senha']){
+			$_SESSION['login'] = $buscar_mysql;
+			echo json_encode(array('logado'=>true));
+		}else{
+			echo json_encode($error);
+		}
+	}else{
+		echo json_encode($error);
+	}
+	
+	die;
+}
+////////////////////////////////////////////////
+if($_GET['op'] == 'logout'){
+	
+	unset($_SESSION['login']);
+
+	echo json_encode(array('logout'=>true));
+	
+	die;
+}
 
 ////////////////////////////////////////////////
 if($_GET['op'] == 'aluguel_get'){
@@ -36,6 +72,16 @@ if($_GET['op'] == 'aluguel_set'){
 	}else{
 		$_POST['cliente'] = $buscar_mysql[clientes_id];
 	}
+
+	if($_POST['status']=='finalizado'){
+		$_POST['data_fechamento']=date('d/m/Y H:i');
+		$_POST['user_fechamento']=$_SESSION['user'];
+	}else{
+		$_POST['data_fechamento']='';
+		$_POST['user_fechamento']='';
+	}
+
+
 
 	$salvar_mysql = salvar_mysql('aluguel',$_POST, $_POST['aluguel_id'],'aluguel_id');
 
@@ -89,19 +135,30 @@ if($_GET['op'] == 'condutores_get'){
 }
 
 
+
 if($_GET['op'] == 'condutores_set'){
-	salvar_mysql('condutores',$_POST,$_POST['condutores_id'],'condutores_id');
+	
 	
 	if($_POST['condutor_contrato']){
 
-		$_POST['contrato_condutores'] = $_POST['condutor_contrato'].'_'.$_POST['condutores_id'];
-
-		salvar_mysql('contrato_condutores',$_POST,$_POST['contrato_condutores'],'contrato_condutores');
+		salvar_mysql('contrato_condutores',$_POST,$_POST['contrato_condutores_id'],'contrato_condutores_id');
 
 	}
+
+	salvar_mysql('condutores',$_POST,$_POST['condutores_id'],'condutores_id');
+
 	echo ok;
 	die;
 }
+if($_GET['op'] == 'condutores_list'){
+	
+	$consultar = consultar_mysql('contrato_condutores',array('condutor_contrato'=>$_GET['condutor_contrato']));
+
+
+	echo json_encode($consultar);
+	die;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////
 if($_GET['op'] == 'itens_adicionais_get'){
@@ -136,32 +193,73 @@ if($_GET['op'] == 'servicos_get'){
 }
 //////////////////////////////////////////////////////////////////////////////
 if($_GET['op'] == 'servicos_set'){
-	salvar_mysql('servicos',$_POST,$_POST['servicos_id'],'servicos_id');
+	
 	
 	if($_POST['servicos_contratos']){
 
-		$_POST['servicos_contratos_cod'] = $_POST['servicos_contratos'].'_'.$_POST['servicos_id'];
+		//$_POST['servicos_contratos_cod'] = $_POST['servicos_contratos'].'_'.$_POST['servicos_id'];
 
-		salvar_mysql('servicos_contratos',$_POST,$_POST['servicos_contratos_cod'],'servicos_contratos_cod');
+		salvar_mysql('servicos_contratos',$_POST,$_POST['servicos_contratos_id'],'servicos_contratos_id');
 
 	}
+	unset($_POST['servicos_contratos_id']);
+	unset($_POST['servicos_contratos']);
+
+	salvar_mysql('servicos',$_POST,$_POST['servicos_id'],'servicos_id');
+
 	echo ok;
 	die;
 }
+if($_GET['op'] == 'servicos_list'){
+	
+	if($_GET['servicos_contratos']){
+		$consultar = consultar_mysql('servicos_contratos',array('servicos_contratos'=>$_GET['servicos_contratos']));
+		echo json_encode($consultar);
+		die;		
+	}
+
+	die;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////
 if($_GET['op'] == 'pagamentos_set'){
-	salvar_mysql('pagamentos',$_POST,$_POST['forma'],'forma');
+	//salvar_mysql('pagamentos',$_POST,$_POST['forma'],'forma');
 	
 	if($_POST['pagamentos_contratos']){
 
-		$_POST['pagamentos_contratos_cod'] = $_POST['pagamentos_contratos'].'_'.rand(10000,99999);
+		//$_POST['pagamentos_contratos_cod'] = $_POST['pagamentos_contratos'].'_'.rand(10000,99999);
 
-		salvar_mysql('pagamentos_contratos',$_POST,$_POST['pagamentos_contratos_cod'],'pagamentos_contratos_cod');
+		salvar_mysql('pagamentos_contratos',$_POST,$_POST['pagamentos_contratos_id'],'pagamentos_contratos_id');
 
 	}
 	echo ok;
 	die;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+if($_GET['op'] == 'pagamentos_list'){
+	//salvar_mysql('pagamentos',$_POST,$_POST['forma'],'forma');
+	
+	if($_GET['pagamentos_contratos']){
+		$consultar = consultar_mysql('pagamentos_contratos',array('pagamentos_contratos'=>$_GET['pagamentos_contratos']));
+		echo json_encode($consultar);
+		die;		
+	}
 
+	die;
+}
 
+//////////////////////////////////////////////////////////////////////////////
+if($_GET['op'] == 'users_set'){
+
+	if(!$_POST['users_id']){
+		$_POST[data_cadastro] = date('d/m/Y H:i:s');
+		$_POST[mktime_reg] = mktime();
+	}
+
+	$salvar_mysql = salvar_mysql('users',$_POST,$_POST['users_id'],'users_id');
+
+	echo json_encode($salvar_mysql);
+	die;
+}

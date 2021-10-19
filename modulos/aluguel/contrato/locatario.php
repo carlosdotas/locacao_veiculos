@@ -1,34 +1,35 @@
-<?php 
-    include_once('../../../funcoes.php');
-?>
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:120px">
+
+<table style="height:122px" class="table">
     <tbody>
         <tr>
-            <th style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">LOCAT&Aacute;RIO</strong>
+            <th >
+            LOCATÁRIO
             </th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-            <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
+            <td class="tdBody">
+            <table cellspacing="0" style=" width:100.0%; ">
                 <tbody>
                     <tr>
                         <td style=" width:50%">
-                            <span style="font-size:10px">Nome do Cliente:</span><br>
-                            <b style="font-size:12px"><?php echo $cliente[nome] ?></b><br>
-                            <span style="font-size:10px">Documento CPF/CNPJ:</span><br>
-                            <b style="font-size:12px"><?php echo $cliente[cpf_cnpj] ?></b><br>
-                            </td>
-                            <td style=" width:50%">
-
-                            <span style="font-size:10px">Contatos:</span><br>
-                            <b style="font-size:12px"><?php echo $cliente[telefone] ?></b><br>
+                            <label>Nome do Cliente:</label>
+                            <div class="field"><?php echo $cliente[nome] ?></div>
                         </td>
-                        <td style=" width:50%">
-                            <span style="font-size:10px">Endere&ccedil;o:</span><br>
-                            <b style="font-size:12px"><?php echo $cliente[endereco] ?></b>
+                        <td >
+                            <label>Contatos:</label>
+                            <div class="field"><?php echo $cliente[telefone] ?></div>
                         </td>
                     </tr>
+                    <tr>
+                        <td style=" width:50%">                         
+                            <label>Documento CPF/CNPJ:</label>
+                            <div class="field"><?php echo $cliente[cpf_cnpj] ?></div>
+                        </td>
+                        <td >
+                            <label>Endereço:</label>
+                            <div class="field"><?php echo $cliente[endereco] ?></div>
+                        </td>
+                    </tr>                    
                 </tbody>
             </table>
             </td>

@@ -1,0 +1,35 @@
+<meta title=" ADICIONAR PAGAMENTOS" iconCls="car_add_32" width="400" >
+
+<div class="dialog_form">
+    <form id="form_pagamentos" action="server.php?op=pagamentos_set"  method="post">
+        
+        <select class="easyui-combobox" label="Forma de Pagamento" name="forma" required="true"  labelWidth="120" editable="false" name="dept" style="width: 100%"  style="width:300px">
+            <option value="avista">Avista</option>
+            <option value="pix">Pix</option>
+            <option value="cartao">Cartão</option>
+            <option value="tranferencia">Tranferência</option>
+            <option value="boleto">Boleto</option>
+        </select>
+
+        <div class="fiels">
+            <input class="easyui-datebox" editable="false" labelWidth="120" label="Data de Pagamento" name="data_pagamento" required="true" style="width: 100%"  >
+        </div>
+
+        <div class="fiels">
+            <input class="easyui-numberbox" labelWidth="120" label="Valor" name="valor" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div>  
+
+        <div class="fiels">
+            <input class="easyui-textbox" multiline="true" labelWidth="120" label="Outras Informações" name="detalhes" style="width: 100%; height:50px" data-options="iconCls:'bullet_arrow_left_32'" >
+        </div>  
+
+        <input type="hidden" id="pagamentos_contratos" name="pagamentos_contratos" value="">
+        <input type="hidden" name="pagamentos_contratos_id">
+    </form>                 
+</div>
+<script type="text/javascript">
+	$('#pagamentos_contratos').val(
+        $('.contrato_id').textbox('getValue')
+    ) 
+</script>
+

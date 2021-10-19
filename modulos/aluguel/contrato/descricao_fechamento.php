@@ -1,43 +1,45 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:100px">
+<table class="table">
     <tbody>
         <tr>
-            <th colspan="3" style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">DESCRIÇÃO DE FECHAMENTO</strong>
-            </th>
+            <th>DESCRIÇÃO DE FECHAMENTO</th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-                <table cellspacing="0" style=" border-collapse:collapse; width:100.0%">
+            <td class="tdBody">
+                <table >
                     <tbody>
                         <tr>
-                            <td colspan="2" style="vertical-align:top; width:50%">
+                            <td style="width:50%">
 
                                 <span style="font-size:10px">Perda / Danos:</span><br>
-                                <b style="font-size:12px"><{aluguel_diaria_valor}></b><br>
+                                <b style="font-size:12px"><?php echo $aluguel[perca_dano] ?></b><br>
 
                             </td>
+                            <td  style="width:50%">
 
+                                <span style="font-size:10px">Valor da Perda ou Danos:</span><br>
+                                <b style="font-size:12px"><?php echo $aluguel[valor_perca_dano] ?></b><br>
+
+                            </td>
                         </tr>                                      
                         <tr>
-                            <td colspan="2" style="vertical-align:top; width:50%; border-top: 1px solid;">
-
+                            <td colspan="2" style="border-top: 1px solid;">
                                 <span style="font-size:10px">Observações:</span><br>
-                                <b style="font-size:12px"><{aluguel_diaria_valor}></b><br>
+                                <b style="font-size:12px"><?php echo $aluguel[observacoes] ?></b><br>
 
                             </td>
         
                         </tr>  
                         <tr>
-                            <td  style="vertical-align:top; width:50%; border-top: 1px solid;">
+                            <td  style="width:50%; border-top: 1px solid;">
 
                                 <span style="font-size:10px">Data/Hora de Fechamento:</span><br>
-                                <b style="font-size:12px"><{aluguel_diaria_valor}></b><br>
+                                <b style="font-size:12px"><?php echo $aluguel[data_fechamento] ?></b><br>
 
                             </td>
-                            <td  style="vertical-align:top; width:50%; border-top: 1px solid;">
+                            <td  style="width:50%; border-top: 1px solid;">
 
                                 <span style="font-size:10px">Fechado por:</span><br>
-                                <b style="font-size:12px"><{aluguel_diaria_valor}></b><br>
+                                <b style="font-size:12px"><?php echo $aluguel[user_fechamento] ?></b><br>
 
                             </td>
                         </tr>                          

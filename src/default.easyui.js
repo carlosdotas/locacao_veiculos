@@ -18,6 +18,15 @@ $.fn.datebox.defaults.parser = function(s){
     }
 }
 
+$.extend($.fn.validatebox.defaults.rules, {
+    minLength: {
+        validator: function(value, param){
+            return value.length >= param[0];
+        },
+        message: 'Deve ter no Minimo {0} caracteres.'
+    }
+});    
+
 //numberbox
 $.fn.numberbox.defaults.precision = 2
 $.fn.numberbox.defaults.decimalSeparator = ","

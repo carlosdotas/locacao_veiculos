@@ -1,7 +1,7 @@
 <meta title=" ADICIONAR ALUGUEL" iconCls="user_add_32" width="90%" height="90%">
 
 <div class="easyui-layout" fit="true">
-    <form id="form_aluguel" class="form_aluguel" action="server.php?op=aluguel_set" method="post">
+    <form class="form_aluguel" action="server.php?op=aluguel_set" method="post">
 
     <div data-options="region:'center'" border=0 >
             <div class="easyui-layout" fit="true">
@@ -68,7 +68,7 @@
                             <table style="width:100%;">
                                 <tr>  
                                     <td >
-                                        <input labelPosition="top" class="easyui-numberbox km_saida"  label="KM Saida" precision="0" name="km_saida"  style="width: 120px"   > 
+                                        <input labelPosition="top" class="easyui-numberbox km_saida" label="KM Saida" precision="0" name="km_saida" style="width: 120px"   > 
                                     </td>
                                     <td >
                                         <input labelPosition="top" precision="0" class="easyui-numberbox km_retorno" label="KM Retorno" name="km_retorno" style="width: 120px"   > 
@@ -85,73 +85,62 @@
                                         <input labelPosition="top" data-options="showTip:true,step:25" class="easyui-slider tanque_retorno" label="KM Retorno" name="tanque_retorno" style="width: 120px"   > 
                                     </td>
                                    <td >
-                                        <input labelPosition="top" class="easyui-numberbox caucao" label="Calção" name="caucao" style="width: 100%"   > 
+                                        <input labelPosition="top" class="easyui-numberbox caucao" label="Calção" name="caucao" style="width: 120px"   > 
                                     </td>     
+                                                                                  
+                           
+                                    <td >
+                                        <input labelPosition="top" class="easyui-textbox perca_dano" label="Perca e dados" name="perca_dano" style="width:100%;" > 
+                                    </td>
+                                    <td >
+                                        <input labelPosition="top" class="easyui-numberbox valor_perca_dano" label="Valor da Perca ou Dano" name="valor_perca_dano" style="width:120px;" > 
+                                    </td>
                                                                                   
                                 </tr>                                    
                             </table>
-
                         </div>                          
                         <div title="Pagamentos" iconCls="money_add_32">
-                            <table class="pagamento" fit="true" border="0">
-                                <thead>
-                                    <tr>
-                                        
-                                        <th data-options="field:'forma'">FORMA</th>
-                                        <th data-options="field:'data_pagamento'">DATA</th>
-                                        <th data-options="field:'valor'">VALOR</th>
-                                        
-                                    </tr>
-                                </thead>
-                            </table>
-
+                            <table class="pagamento"></table>
                         </div>                        
                         <div title="Serviços Adicionais" iconCls="setting_tools_32">
-                            <table class="contrato_servicos_list" fit="true" border="0">
-                                <thead>
-                                    <tr>
-                                        
-                                        <th data-options="field:'nome'">NOME</th>
-                                        <th data-options="field:'valor'">VALOR</th>
-                                        
-                                    </tr>
-                                </thead>
-                            </table>
+                            <table class="servicos"></table>
                         </div>
                         <div title="Condutores" iconCls="user_racer_32" >
-                            <table class="contrato_condutores_list"   fit="true" border="0" data-options="iconCls:'icon-ok',tools:[
-                                    {
-                                        iconCls:'icon-add',
-                                        handler:function(){
-                                            
-                                        }
-                                    }]">
-                                <thead>
-                                    <tr>
-                                        <th data-options="field:'nome'">Nome</th>
-                                        <th data-options="field:'cpf'">CPF</th>
-                                        <th data-options="field:'habilitacao'">Habilitacão</th>
-                                        <th data-options="field:'categoria'">Categoria</th>
-                                        <th data-options="field:'validade'">Validade</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div title="Prorrogações" data-options="iconCls:'icon-reload'" style="display:none;">
-                            Prorrogações
+                            <table class="condutores"></table>
                         </div>
                     </div>  
 
                 </div>
-                <div data-options="region:'south'" style="height:110px;background:#eee;">
+                <div data-options="region:'south'" style="height:155px;background:#ddd;">
                     <table style="width:100%;">
                         <tr>  
+                            <td width="20%">
+                                <input labelPosition="top" class="easyui-textbox data_fechamento" readonly label="Data Fechamento" precision="0" name="data_fechamento" value="XXXXX" style="width: 100%" >
+                            </td> 
                             <td >
+                                <input labelPosition="top" class="easyui-textbox user_fechamento" readonly label="Usuário fechamento" precision="0" name="user_fechamento" value="XXXXX" style="width: 100%" >
+                            </td>                                                         
+                            <td >
+                                <input labelPosition="top" class="easyui-numberbox rodagem" readonly label="Rodagem" precision="0" name="rodagem" value="0" style="width: 100%" >
+                            </td> 
+
+                            <td >
+                                <input labelPosition="top" class="easyui-numberbox kms_dia" readonly label="KM por Dia" precision="0" name="kms_dia"  value="0" style="width: 100%"  >
+                            </td>                             
+                            <td >
+                                <input labelPosition="top" class="easyui-numberbox valor_km" readonly label="Valor KM" name="valor_km"  value="0" style="width: 100%"  >
+                            </td>                           
+                        </tr>                                    
+                    </table>  
+
+                    <table style="width:100%;">
+                        <tr>  
+                            <td width="50%">
                                 <input labelPosition="top" class="easyui-numberbox subtotal_diarias" readonly data-options="cls:'input_vermelho_claro input_negrito'" label="Subtotal Diárias" name="subtotal_diarias" value="0" style="width: 100%" >
                             </td> 
 
                             <td >
-                                <input labelPosition="top" class="easyui-numberbox valor_servicos" readonly label="Valor total de Serviços" name="valor_servicos"  value="0" style="width: 140px" >
+                                <input labelPosition="top" class="easyui-numberbox valor_servicos" readonly label="Valor total de Serviços" name="valor_servicos"  value="0" style="width: 100%" >
                             </td>                             
                         </tr>                                    
                     </table>                    
@@ -187,12 +176,7 @@
                 <tr>                                          
                     <td >
                         <input labelPosition="top" class="easyui-textbox diarias" name="detalhes" prompt="Detalhes" style="width: 100%" >
-                    </td> 
-                    <td >
-                        <a href="#" onclick="dialog_close(dialog_id_aluguel)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
-                        <a onclick="dialog_save(dialog_id_aluguel,'#form_aluguel','#datagrid_aluguel')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
-                    </td>    
-                           
+                    </td>  
                 </tr>                                    
             </table> 
         </div>        
@@ -206,29 +190,45 @@
     var dialog_id_aluguel = dialog_id;   
 
 
-
-
-
-
     //////////////////////////////////////////////////////////////
     function abrir_dialog_form_clientes(){  
         $('.combobox_cliente').combobox('hidePanel');
-        dialog_open('modulos/clientes/form.html','',
-            function(dados,data){
+        $().dialogForm({
+            href:'modulos/clientes/form.html',
+            onSave:function(dados){
                 $('.combobox_cliente').combobox('reload');
+                $('.combobox_cliente').combobox('setValue',dados.id);
             }
-        )
+        });
+
     }
 
+    //////////////////////////////////////////////////////////////
+    function calc_rodagem(){
+        var km_saida = $('.km_saida').numberbox('getValue')-0;
+        var km_retorno = $('.km_retorno').numberbox('getValue')-0;
+        var subtotal_diarias = $('.subtotal_diarias').numberbox('getValue')-0;
+        var total_diarias = $('.total_diarias').numberbox('getValue')-0;
+        
+        var rodagem = km_retorno-km_saida;
+        var kms_dia = rodagem/total_diarias;
+        var valor_km = subtotal_diarias/rodagem;
 
+        $('.rodagem').numberbox('setValue',rodagem)
+        $('.kms_dia').numberbox('setValue',kms_dia)
+        $('.valor_km').numberbox('setValue',valor_km)
+    }
+
+    //////////////////////////////////////////////////////////////
     function calcula_subtotal(){
 
         var valor_servicos_calc = $('.valor_servicos').numberbox('getValue');
         var subtotal_diarias_calc = $('.subtotal_diarias').numberbox('getValue');
         var total_recebido_calc = $('.total_recebido').numberbox('getValue');
         var desconto_calc = $('.desconto').numberbox('getValue');
+        var valor_perca_dano = $('.valor_perca_dano').numberbox('getValue')-0;
 
-        var calculo_subtotais = ((valor_servicos_calc-0)+(subtotal_diarias_calc-0))-desconto_calc-0;
+        var calculo_subtotais = ((valor_servicos_calc-0)+(subtotal_diarias_calc-0)+valor_perca_dano)-desconto_calc-0;
         
         var subtotal_recebito = $('.subtotal').numberbox('setValue',calculo_subtotais);
 
@@ -239,6 +239,7 @@
         var data_saida = $('.total_receber').numberbox('setValue',calculo_receber);
     }
 
+    //////////////////////////////////////////////////////////////
     function calcula_data_valores(){
         
         var data_saida = $('.data_saida').datebox('getValue');
@@ -256,10 +257,6 @@
         $('.subtotal_diarias').numberbox('setValue',valor_total_diaria);      
 
     }
-
-
-    $( document ).ready(function() {
-
         ////////////////////////////////////////////////////////
         $('.combobox_cliente').combobox({
             valueField:'clientes_id',
@@ -291,6 +288,9 @@
             }
         })    
 
+        
+        
+
 
         ////////////////////////////////////////////////////////
         $('.valor_diaria').numberbox({
@@ -300,8 +300,16 @@
 
                 var valor_total_diaria = (value*($('.total_diarias').textbox('getValue')-0)).toFixed(2);
                 $('.subtotal_diarias').numberbox('setValue',valor_total_diaria);
+
+                calc_rodagem()
             }
-        })    
+        })   
+        ////////////////////////////////////////////////////////
+        $('.valor_perca_dano').numberbox({
+            onChange:function(value){
+                calcula_subtotal()
+            }
+        }) 
 
 
         /////////////////////////////////////////////////////////
@@ -315,6 +323,7 @@
                 }                
                 calcula_data_valores()
                 calcula_subtotal()
+                calc_rodagem()
             }
         }) 
 
@@ -329,69 +338,93 @@
                 }     
                 calcula_data_valores()
                 calcula_subtotal()
+                calc_rodagem()
             }
         }) 
 
-        ////////////////////////////////////////////////////////
-        $('.form_aluguel').form({
-            onLoadSuccess:function(){
-                $('.pagamento').datagrid({
-                    btn_edit:false,
-                    btn_search:false,                    
-                    form:"modulos/pagamentos/form.html",
-                    id:'pagamento',
-                    tableMysql:'pagamentos_contratos',
-                    url:'server.php?json=pagamentos_contratos&pagamentos_contratos='+$('.contrato_id').textbox('getValue'),
-                    onCloseDialog:function(){
-
-
-                        var data = $('.pagamento').datagrid('getData');
-                            var total=0
-                            $.each(data.rows, function( index, value ) {
-                                total=((value.valor-0)+total);
-                            });    
-                            $('.total_recebido').numberbox('setValue',total);
-                            calcula_subtotal()
-                            
-                    }                    
-                });                
-                $('.contrato_servicos_list').datagrid({
-                    btn_edit:false,
-                    btn_search:false,                    
-                    form:"modulos/servicos/form.html",
-                    tableMysql:'servicos_contratos',
-                    id:'contrato_servicos_list',
-                    url:'server.php?json=servicos_contratos&servicos_contratos='+$('.contrato_id').textbox('getValue'),
-                    onCloseDialog:function(){
-                        var data = $('.contrato_servicos_list').datagrid('getData');
-                            var total=0
-                            $.each(data.rows, function( index, value ) {
-                                total=((value.valor-0)+total);
-                            });    
-                            $('.valor_servicos').numberbox('setValue',total);
-                            calcula_subtotal()
-                    }
-                }); 
-                $('.contrato_condutores_list').datagrid({
-                    btn_edit:false,
-                    btn_search:false,  
-                    id:'contrato_condutores_list',
-                    form:"modulos/condutores/form.html", 
-                    tableMysql:'contrato_condutores',                  
-                    url:'server.php?json=contrato_condutores&condutor_contrato='+$('.contrato_id').textbox('getValue')
-                });
-                              
+        /////////////////////////////////////////////////////////
+        $('.km_saida , .km_retorno').numberbox({
+            onChange:function(){   
+  
+                calcula_data_valores()
+                calcula_subtotal()
+                calc_rodagem()
             }
-        })
+        }) 
 
-        ////////////////////////////////////////////////////////
-        $('.form_aluguel').form('load','server.php?op=aluguel_get&id='+dialog_id_aluguel);
 
+
+
+    $( document ).ready(function() {
+  
         ////////////////////////////////////////////////////////
-        $('#dialog_'+dialog_id_aluguel).dialog({
-            //maximizable:true,
-            //maximized:true
-        })
+        setTimeout(function(){ 
+
+            /////////////////////////////////////////////////////
+            $('.pagamento').datagridMysql({
+                pagination:false,
+                table:'pagamentos_contratos',
+                url:'server.php?op=pagamentos_list&pagamentos_contratos='+$('.contrato_id').textbox('getValue'),
+                form:"modulos/aluguel/form_pagamentos.html",
+                columns:[[
+                    {field:'forma',title:'FORMA'},
+                    {field:'data_pagamento',title:'DATA'},
+                    {field:'valor',title:'VALOR'}
+                ]],
+                onLoadSuccess:function(){
+                    var data = $('.pagamento').datagrid('getData');
+                    var total=0
+                    $.each(data.rows, function( index, value ) {
+                        total=((value.valor-0)+total);
+                    });    
+                    $('.total_recebido').numberbox('setValue',total);
+                    calcula_subtotal()                        
+                },               
+            })  
+
+            /////////////////////////////////////////////////////
+            $('.servicos').datagridMysql({
+                pagination:false,
+                table:'servicos_contratos',
+                url:'server.php?op=servicos_list&servicos_contratos='+$('.contrato_id').textbox('getValue'),
+                form:"modulos/aluguel/form_servicos.html",
+                columns:[[
+                    {field:'nome',title:'SERVIÇO'},
+                    {field:'data',title:'DATA'},
+                    {field:'valor',title:'VALOR'}
+                ]],
+                onLoadSuccess:function(){
+                    var data = $('.servicos').datagrid('getData');
+                    var total=0
+                    $.each(data.rows, function( index, value ) {
+                        total=((value.valor-0)+total);
+                    });    
+                    $('.valor_servicos').numberbox('setValue',total);
+                    calcula_subtotal()                        
+                },               
+            }) 
+
+            /////////////////////////////////////////////////////
+            $('.condutores').datagridMysql({
+                pagination:false,
+                table:'contrato_condutores',
+                url:'server.php?op=condutores_list&condutor_contrato='+$('.contrato_id').textbox('getValue'),
+                form:"modulos/aluguel/form_condutores.html",
+                columns:[[
+                    {field:'nome',title:'NOME'},
+                    {field:'cpf',title:'CPF'},
+                    {field:'habilitacao',title:'HABILITAÇÂO'},
+                    {field:'categoria',title:'CATEGORIA'},
+                    {field:'validade',title:'VALIDADE'},
+                    {field:'telefone',title:'TELEFONE'},
+                ]],
+                onLoadSuccess:function(){
+                       
+                },               
+            }) 
+
+        }, 100);
+         
     });
 
 </script>

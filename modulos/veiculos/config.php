@@ -1,7 +1,8 @@
 <?php
 $_SERVER['modulos_config'][] = array( 
-	'name'	=> 'veiculos',
-	'icon'	=> 'modulos/veiculos/imgs/icon.png',
+	'name'	=> 'Veículos',
+	'icon'	=> 'src/icons_new/car.png',
+	'iconCls' => 'car_32',
 	'id'	=> 'computer',
 	'width'	=> '95%',
 	'height'=> '95%',

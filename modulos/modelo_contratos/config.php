@@ -1,7 +1,8 @@
 <?php
 $_SERVER['modulos_config'][] = array( 
 	'name'	=> 'Modelo de contratos',
-	'icon'	=> 'modulos/modelo_contratos/imgs/icon.png',
+	'icon'	=> 'src/icons_new/document_comment_below.png',
+	'iconCls' => 'document_comment_below_32',
 	'id'	=> 'contratos',
 	'width'	=> '95%',
 	'height'=> '95%',

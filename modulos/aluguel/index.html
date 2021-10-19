@@ -1,6 +1,6 @@
 <div class="easyui-layout" fit="true">
 	<div data-options="region:'center'"  border=0 >
-		<table class="datagrid_aluguel" border="0">
+		<table id="datagrid_aluguel" border="0">
 		</table>
 	</div>
 
@@ -22,6 +22,55 @@
 		});
 	});
 
+	$('#datagrid_aluguel').datagridMysql({
+		table:'aluguel',
+		url:'server.php?op=aluguel_list',
+		form:"modulos/aluguel/form.html",
+		server:'server.php?op=aluguel_get&id=',
+		columns:[[
+			{field:'action',title:'#',
+	    		width:108,
+	    		align:'center',
+		    	formatter: function(value,row,index){
+					return `
+					<a href="#" class="easyui-linkbutton" onclick="checklist('${row.aluguel_id}')" data-options="iconCls:'check_box_32'" ></a>
+					<a href="#" class="easyui-linkbutton print_cont" data-options="iconCls:'printer_add_32'" ref="${row.aluguel_id}" ></a>
+					<a href="#" onclick='postPrint(\`{"aluguel_id":"${row.aluguel_id}"}\`,\`modulos/aluguel/contrato/index.php\`)' class="easyui-linkbutton" data-options="iconCls:'printer_32'"></a>				
+					`;
+				},
+				styler: function(value,row,index){
+					return 'background-color:#ddd';
+				}					
+	    	},
+	    	{field:'status',title:'STATUS',align:'center'},
+	    	{field:'status_pagamento',title:'PAGAMENTO', 
+		    	formatter: function(value,row,index){
+		    		var receber = row.receber-0
+		    		var recebido = row.total_recebido-0
+					if(receber>=0.01){
+						return 'pendente';
+					}else{
+						return 'pago';
+					} 
+				},align:'center'
+			},
+	    	{field:'veiculo_placa',title:'VEÍCULO'},
+	        {field:'cliente_nome',title:'CLIENTE'},	        
+	        {field:'data_saida',title:'DATA DA SAÍDA',align:'center'},
+	        {field:'data_retorno',title:'DATA DA RETORNO',align:'center'},
+	        {field:'total_diarias',title:'DIÁRIAS',align:'center'},
+	        {field:'subtotal',title:'SUBTOTAL',align:'center'},
+	        {field:'total_recebido',title:'VALOR RECEBIDO',align:'center'},
+	        {field:'receber',title:'VALOR RECEBBER',align:'center'},
+	    ]]
+	})	
+
+
+
+
+
+
+/*
 	$('.datagrid_aluguel').datagrid({
 	    url:'server.php?op=aluguel_list',
 	    form:"modulos/aluguel/form.html",
@@ -61,7 +110,7 @@
 	        {field:'receber',title:'VALOR RECEBBER',align:'center'},
 	    ]]
 	});
-
+*/
 
     //$('.print_cont').bind('click',function(e){
     $( "body" ).delegate( ".print_cont", "click", function(e) {
@@ -71,4 +120,11 @@
             top: e.pageY
         });
     });
+
+    function checklist(id){
+
+    	postPrint(`{"aluguel_id":"${id}"}`,`modulos/aluguel/cheklist/index.php`)
+
+    }
+
 </script>

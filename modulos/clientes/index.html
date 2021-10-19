@@ -1,20 +1,18 @@
 <div class="easyui-layout" fit="true">
 	<div data-options="region:'center'"  border=0 >
-		<table class="datagrid_clientes" border="0">
+		<table id="datagrid_clientes" border="0">
 		</table>
 	</div>
 </div>
 <script type="text/javascript">
-	$('.datagrid_clientes').datagrid({
-	    form:"modulos/clientes/form.html",
-	    tableMysql:'clientes', 	
-	    id:'datagrid_clientes'	,
-	    url:'server.php?json=clientes', 
+	$('#datagrid_clientes').datagridMysql({
+		table:'clientes',
+		url:'server.php?json=clientes',
+		form:"modulos/clientes/form.html",
 	    columns:[[
-	        {field:'nome',title:'Nome',width:100,type:'numberbox'},
-	        {field:'cpf_cnpj',title:'CPF/CNPJ',width:100},
-	        {field:'telefone',title:'TELEFONE',width:100,align:'center'}
+	        {field:'nome',title:'Nome',width:100,type:'numberbox',sortable:true},
+	        {field:'cpf_cnpj',title:'CPF/CNPJ',width:100,sortable:true},
+	        {field:'telefone',title:'TELEFONE',width:120,align:'center',sortable:true}
 	    ]]
-	});
-
+	})	
 </script>

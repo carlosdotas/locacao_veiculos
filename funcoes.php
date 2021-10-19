@@ -1082,7 +1082,7 @@ if($_GET[exclui_mysql]){
 }
 
 if($_GET[buscar_mysql]){
-	echo json_encode(buscar_mysql($_GET[buscar_mysql],$_GET[ref],$_GET[col]));
+	echo json_encode(buscar_mysql($_GET[buscar_mysql],$_GET[$_GET[buscar_mysql].'_id']));
 	die;
 }
 

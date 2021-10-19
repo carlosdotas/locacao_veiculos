@@ -43,13 +43,7 @@
 
         <input type="hidden" name="salvar" value="veiculos">
         <input type="hidden" name="veiculos_id">
-        <div class="dialog_buttons">
-            <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
-            <a onclick="dialog_save(dialog_id,'#form_veiculos','#datagrid_veiculos')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
-        </div>        
+     
     </form>                 
 </div>
 
-<script type="text/javascript">    
-    $('#form_veiculos').form('load','server.php?buscar_mysql=veiculos&col=veiculos_id&ref='+dialog_id);
-</script>

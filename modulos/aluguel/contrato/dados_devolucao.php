@@ -1,58 +1,36 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:100px">
+<table style="height:100px" class="table">
     <tbody>
         <tr>
-            <th colspan="3" style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">DADOS DE DEVULUÇÃO</strong>
-            </th>
+            <th>DADOS DE DEVULUÇÃO</th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-                <table cellspacing="0" style=" border-collapse:collapse; width:100.0%">
+            <td class="tdBody">
+                <table >
                     <tbody>
                         <tr>
-                            <td style="vertical-align:top; width:50%">
+                            <td style="width:50%">
 
-                                <span style="font-size:10px">Data Devolução:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[data_devolucao] ?></b><br>
+                                <label>Data Devolução:</label>
+                                <div class="field"><?php echo $aluguel[data_retorno] ?></div>
+
+                            </td>
+
+                            <td style="width:50%">
+
+                                <label>Hora Devolução:</label>
+                                <div class="field"><?php echo $aluguel[hora_retorno] ?></div>
 
                             </td>
 
-                            <td style="vertical-align:top; width:50%">
-
-                                <span style="font-size:10px">Hora Devolução:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[hora_devolucao] ?></b><br>
-
-                            </td>
-     
-                            <td  style="vertical-align:top; width:50%">
-
-                                <span style="font-size:10px">Diárias excedentes:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[diaria_excedente] ?></b><br>
-
-                            </td>
-         
-                            <td  style="vertical-align:top; width:50%">
-
-                                <span style="font-size:10px">Horas excedentes:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[hora_excedente] ?></b><br>
-
-                            </td>
                         </tr>                                      
                         <tr>
-                            <td colspan="2" style="vertical-align:top; width:50%; border-top: 1px solid;">
+                            <td colspan="2" style="border-top: 1px solid;">
 
-                                <span style="font-size:10px">KM Rodados:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[km_rodados] ?></b><br>
-
-                            </td>
-     
-                            <td colspan="2" style="vertical-align:top; width:50%;border-top: 1px solid;">
-
-                                <span style="font-size:10px">KM  excedentes:</span><br>
-                                <b style="font-size:12px"><?php echo $aluguel[km_excedendes] ?></b><br>
+                                <label>KM Rodados:</label>
+                                <div class="field"><?php echo $aluguel[rodagem] ?> Kms</div>
 
                             </td>
-         
+  
    
                         </tr>  
                     </tbody>

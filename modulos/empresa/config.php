@@ -1,7 +1,8 @@
 <?php
 $_SERVER['modulos_config'][] = array( 
 	'name'	=> 'Empresa',
-	'icon'	=> 'modulos/empresa/imgs/icon.png',
+	'icon'	=> 'src/icons_new/shop.png',
+	'iconCls' => 'shop_32',
 	'id'	=> 'computer',
 	'width'	=> '400',
 	'height'=> '247',

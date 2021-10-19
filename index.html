@@ -12,84 +12,115 @@
 	<link rel="stylesheet" type="text/css" href="src/desktop.css">
 	<link rel="stylesheet" type="text/css" href="src/texteditor.css">	
 	
-
 	<script type="text/javascript" src="src/jquery.min.js"></script>
 	<script type="text/javascript" src="src/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="src/jquery.desktop.js"></script>
 	<script type="text/javascript" src="src/jquery.portal.js"></script>
-	<script type="text/javascript" src="src/datagrid-filter.js"></script>	
+	<script type="text/javascript" src="src/datagrid-filter.js"></script>
+	<script type="text/javascript" src="src/easyui.dialogform.js"></script>	
+	<script type="text/javascript" src="src/easyui.datagridmysql.js"></script>
 
 	<script type="text/javascript" src="src/easyui/locale/easyui-lang-pt_BR.js"></script>
 
-	<script src="src/ckeditor/ckeditor.js"></script>
-
 
 	<script type="text/javascript">
+		var server = {}
 		$(function(){
 
-			var modulos = {}
-			$.getJSON( "server.php?op=modulos_config", function( data ) {
-			  modulos = data;
-			}).always(function() {
+			if(localStorage.getItem('theme')){
+				var themes = localStorage.getItem('theme');
+				var link = $('head').find('link:first');
+				link.attr('href', 'src/easyui/themes/'+themes+'/easyui.css');
+			}else{
+				localStorage.setItem('theme','bootstrap')
+			}
 
+
+			if(localStorage.getItem('wallpaper')){
+				var wallpaper = localStorage.getItem('wallpaper');
+				//$('body').desktop('setWallpaper', wallpaper);
+			}else{
+				localStorage.setItem('wallpaper','wallpaper/bg (14).jpg')
+			}
+
+
+	
+
+
+			
+			$.getJSON( "server.php?op=modulos_config", function( data ) {
+			  server = data;
+			}).always(function(data) {
+
+				//console.log(data);
+
+				if(!data.session.login){
+					$().dialogForm({
+						href:'modulos/login/form.html',
+						closable:false,
+						saveble:false,	
+						cls:'dialog_login',
+						buttons:[{
+							text:'ENTRAR',
+							iconCls:'lock_open_32',
+							handler:function(){
+									$.messager.progress();
+									$.getJSON( "server.php?op=logar&login="+$('.login').textbox('getValue')+'&senha='+$('.senha').passwordbox('getValue'), function( data ) {
+										
+										if(data.error){
+											$.messager.alert('Erro',data.error.login); 
+										}
+										if(data.logado==true){
+											$(dialogForm).dialogForm('close'); 
+										}
+										$.messager.progress('close');
+									})
+
+
+
+									$('#form_login').form('reset');
+								}
+							}],
+					});
+				}
+
+				//////////////////////////////////////////////////////////////
+				var menu = [];
+				$.each(server.modulos, function( index, value ) {	
+					var insert = {};
+					insert['text'] = value.name
+					insert['iconCls'] = value.iconCls					
+					insert['handler'] = function(){
+						$('body').desktop('openApp', value)
+					}
+					menu.push(insert);	
+	            });		
+
+				/////////////////////////////////////////////////////////////
 				$('body').desktop({
-								apps: modulos,
-								menus: [{
+						apps: server.modulos,
+						wallpaper:localStorage.getItem('wallpaper'),
+						menus: [{
 									text: 'Dotas Sistemas',
+									iconCls:'www_page_32',
 									handler: function(){
 										$('body').desktop('openApp', {
 											icon: 'images/win.png',
 											name: 'Quem Somos',
 											width: 400,
 											height: 200,
-											onClose: function(){
-												alert();
-											},
 											href: '_about.html'
 										})
 									}
 								},{
-									text: 'Atualizar...',
-									handler: function(){
-										$('body').desktop('openApp', {
-											name: 'System Update'
-										})
-									}
+									text: 'Modulos',
+									iconCls:'plugin_32',
+									menus: menu
 								},{
-									text: 'Itens Recentes',
-									menus: [{
-										text: 'Monitor'
-									},{
-										text: 'Menu 1',
-										menus: [{
-											text: 'Menu 2'
-										},{
-											text: 'Menu 2',
-											menus: [{
-												text: 'Menu 1'
-											},{
-												text: 'Menu 2'
-											},{
-												text: 'Menu 3'
-											}]
-										}]
-									},{
-										text: 'E-Mail',
-										menus: [{
-											text: 'Mail 1'
-										},{
-											text: 'Mail 2'
-										}]
-									},{
-										text: 'Pre-Visualizar'
-									}]
-								},{
-									text: 'Ajuda',
-									iconCls: 'icon-help',
+									text: 'Configurações',
+									iconCls: 'cog_32',
 									handler: function(){
-										$('body').desktop('openApp', {
-											name: 'Ajuda'
-										})
+										settings()
 									}
 								},{
 									text: 'Logout',
@@ -98,7 +129,14 @@
 										$.messager.confirm({
 											title:'Confirmar',
 											msg:'Deseja fazer logout?',
-											border: 'thin'
+											border: 'thin',
+											fn:function(){
+												$.getJSON( "server.php?op=logout", function( data ) {
+										
+													document.location.reload(true);
+													
+												})
+											}
 										})
 									}
 								}],
@@ -135,6 +173,11 @@
 			layout.layout({
 				fit: true
 			});
+
+
+
+
+
 			var combo = $('<input>').appendTo(layout.layout('panel','north'));
 			combo.combobox({
 				data: [
@@ -143,26 +186,26 @@
 					{value:'metro',text:'Metro',group:'Base'},
 					{value:'material',text:'Material',group:'Base'},
 					{value:'material-teal',text:'Material Teal',group:'Base'},
-					{value:'bootstrap',text:'bootstrap',group:'Base'},
+					{value:'bootstrap',text:'Bootstrap',group:'Base'},
 					{value:'black',text:'Black',group:'Base'},
 				],
 				width: 300,
 				label: 'Tema: ',
-				value: 'bootstrap',
+				value: localStorage.getItem('theme'),
 				editable:false,
 				panelHeight: 'auto',
 				onChange: function(theme){
 					var link = $('head').find('link:first');
-					link.attr('href', 'https://www.jeasyui.com/easyui/themes/'+theme+'/easyui.css');
+					localStorage.setItem('theme', theme);
+					link.attr('href', 'src/easyui/themes/'+theme+'/easyui.css');					
 				}
 			});
+
+			//console.log(server.wallpapers)
+
 			$('#settings-dl').datalist({
 				fit: true,
-				data: [
-					{"text":"Desktop","img":"images/bg.jpg"},
-					{"text":"Desktop2","img":"images/bg2.jpg"},
-					{"text":"Desktop3","img":"images/bg3.jpg"}
-				],
+				data: server.wallpapers,
 				onLoadSuccess:function(){
 					$(this).datalist('selectRow', 0);
 				},
@@ -170,10 +213,20 @@
 					$('#settings-img').attr('src', row.img)
 				}
 			});
+
+			var getData = $('#settings-dl').datalist('getData');
+			$.each(getData.rows, function( index, values ) {	
+				if(values.img==localStorage.getItem('wallpaper')){
+					$('#settings-dl').datalist('selectRow',index)
+				};	
+            });		
+
 			$('<a style="margin-right:10px"></a>').appendTo(layout.layout('panel','south')).linkbutton({
 				text: 'Salvar',
 				width: 80,
 				onClick: function(){
+					localStorage.setItem('wallpaper_text', $('#settings-dl').datalist('getSelected').img);
+					localStorage.setItem('wallpaper', $('#settings-dl').datalist('getSelected').img);
 					$('body').desktop('setWallpaper', $('#settings-dl').datalist('getSelected').img);
 					$('#settings').window('close');
 				}
@@ -191,14 +244,21 @@
 
 
 
+
+
+
+
 	</script>
 </head>
-<body>
+<body style="background-color:#aaa">
 	<div id="buttons">
-		<a href="javascript:;" class="easyui-linkbutton" outline="true" plain="true" onclick="settings()">CONFIGURAÇÕES</a>
+		<!--<a href="javascript:;" class="easyui-linkbutton" iconCls='cog_32' outline="true" plain="true" onclick="settings()">CONFIGURAÇÕES</a>-->
 	</div>
 	<script type="text/javascript" src="src/scripts.js"></script>	
 	<script type="text/javascript" src="src/default.easyui.js"></script>
+	<script type="text/javascript">
+		
+	</script>
 
 </body>
 </html>

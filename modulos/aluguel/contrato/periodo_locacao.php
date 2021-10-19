@@ -1,40 +1,40 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:120px">
+<table class="table" style="height:122px">
     <tbody>
         <tr>
-            <th style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">PERÍODO DE LOCAÇÃO</strong>
+            <th >
+                PERÍODO DE LOCAÇÃO
             </th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-            <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
+            <td >
+            <table >
                 <tbody>
                     <tr>
-                        <td style="vertical-align:top;">
-                            <span style="font-size:10px">Data/Hora Inicial:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[data_saida] ?></b><br>
+                        <td >
+                            <label>Data Inicial:</label>
+                            <div class="field"><?php echo $aluguel[data_saida] ?></div>
+                            <?php if($aluguel[hora_saida] ) {?>
+                            <label>Hora Inicial:</label>
+                            <div class="field"><?php echo $aluguel[hora_saida] ?></div>
+                             <?php } ?>
                         </td>
-                        <td style="vertical-align:top;">
-                            <span style="font-size:10px">Data/Hora Final:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[data_retorno] ?></b>
+                        <td width="50%" >
+                            <label>Data Final:</label>
+                             <div class="field"><?php echo $aluguel[data_retorno] ?></div>
+                            <?php if($aluguel[hora_saida] ) {?>
+                            <label>Hora Final:</label>
+                            <div class="field"><?php echo $aluguel[hora_retorno] ?></div>
+                             <?php } ?>                             
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <table cellspacing="0" style="border-collapse:collapse; width:100.0%">
-                <tbody>
                     <tr>
-                        <td style="vertical-align:top;">
-                            <span style="font-size:10px">Diárias:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[diarias] ?></b><br>
+                        <td >
+                            <label>Diárias:</label>
+                             <div class="field"><?php echo $aluguel[total_diarias] ?></div>
                         </td>
-                        <td style="vertical-align:top;">
-                            <span style="font-size:10px">Horas:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[horas] ?></b>
-                        </td>
-                       <td style="vertical-align:top;">
-                            <span style="font-size:10px">Status:</span><br>
-                            <b style="font-size:12px"><?php echo $aluguel[status] ?></b>
+                       <td width="50%" >
+                            <label>Status:</label>
+                             <div class="field"><?php echo $aluguel[status] ?></div>
                         </td>                        
                     </tr>
                 </tbody>

@@ -1,13 +1,11 @@
-<table cellspacing="0" style="border-collapse:collapse; width:100.0%; height:100px">
+<table class="table">
     <tbody>
         <tr>
-            <th colspan="3" style="border:2px solid black; height: 1px; background-color: #eee;">
-            <strong style="font-size:14px">PAGAMENTOS</strong>
-            </th>
+            <th>PAGAMENTOS</th>
         </tr>
         <tr>
-            <td style="border:2px solid black;">
-                <table cellspacing="0" style=" border-collapse:collapse; width:100.0%">
+            <td  class="tdBody" style="height:130px" >
+                <table >
                     <tbody>
                     <tr>
                         <td style=" width:50%">

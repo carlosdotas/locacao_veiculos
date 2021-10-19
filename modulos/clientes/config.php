@@ -1,7 +1,8 @@
 <?php
 $_SERVER['modulos_config'][] = array( 
 	'name'	=> 'Clientes',
-	'icon'	=> 'modulos/clientes/imgs/icon.png',
+	'icon'	=> 'src/icons_new/client_account_template.png',
+	'iconCls' => 'client_account_template_32',	
 	'id'	=> 'computer',
 	'width'	=> '95%',
 	'height'=> '95%',

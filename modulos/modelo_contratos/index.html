@@ -1,18 +1,16 @@
 <div class="easyui-layout" fit="true">
 	<div data-options="region:'center'"  border=0 >
-		<table class="datagrid_modelo_contratos" border="0">
+		<table id="datagrid_modelo_contratos" border="0">
 		</table>
 	</div>
 </div>
 <script type="text/javascript">
-	$('.datagrid_modelo_contratos').datagrid({
-	    tableMysql:'modelo_contratos', 	
-	    form:"modulos/modelo_contratos/form.html",
-	    url:'server.php?json=modelo_contratos',
-	    id:'datagrid_modelo_contratos',
-	    columns:[[
+	$('#datagrid_modelo_contratos').datagridMysql({
+		table:'modelo_contratos',
+		url:'server.php?json=modelo_contratos',
+		form:"modulos/modelo_contratos/form.html",
+		columns:[[
 	        {field:'nome_contrato',title:'NOME DO CONTRATO'},
 	    ]]
-	});
-
+	})	
 </script>

@@ -12,31 +12,8 @@
         <div class="fiels">
             <input class="easyui-numberbox" labelWidth="120" label="Valor" name="valor" required="true" style="width: 100%" data-options="iconCls:'bullet_arrow_left_32'" style="width:300px">
         </div>        
-        <!--<input type="hidden" name="salvar" value="servicos">-->
         <input type="hidden" id="servicos_contratos" name="servicos_contratos" value="">
-
         <input type="hidden" name="servicos_id">
-        
-        <div class="dialog_buttons">
-            <a href="#" onclick="dialog_close(dialog_id)" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
-            <a onclick="dialog_save(dialog_id,'#form_servicos','#datagrid_servicos')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
-        </div>        
+   
     </form>                 
 </div>
-
-<script type="text/javascript">  
-    $('#servicos_contratos').val(
-        $('.contrato_id').textbox('getValue')
-    )  
-
-    $('#combobox_servicos').combobox({
-        valueField:'servicos_id',
-        textField:'nome',
-        url:'server.php?json_rows=servicos',
-        onChange:function(value){
-            $('#form_servicos').form('load','server.php?op=servicos_get&id='+value);            
-        }
-    }) 
-
-    $('#form_servicos').form('load','server.php?buscar_mysql=servicos&col=servicos_id&ref='+dialog_id);
-</script>

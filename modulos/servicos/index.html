@@ -1,19 +1,18 @@
 <div class="easyui-layout" fit="true">
 	<div data-options="region:'center'"  border=0 >
-		<table class="datagrid_servicos" border="0"></table>
+		<table id="datagrid_servicos" border="0">
+		</table>
 	</div>
 </div>
 <script type="text/javascript">
-	$('.datagrid_servicos').datagrid({
-	    form:"modulos/servicos/form.html",
-	    tableMysql:'servicos', 
-	    url:'server.php?json=servicos',
-	    id:'datagrid_servicos',
-	    columns:[[
+	$('#datagrid_servicos').datagridMysql({
+		table:'servicos',
+		url:'server.php?json=servicos',
+		form:"modulos/servicos/form.html",
+		columns:[[
 	        {field:'nome',title:'NOME'},
 	        {field:'descricao',title:'DESCRIÇÃO'},
 	        {field:'valor',title:'VALOR'},
 	    ]]
-	});
-
+	})	
 </script>

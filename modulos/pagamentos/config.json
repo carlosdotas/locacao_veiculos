@@ -1,0 +1,9 @@
+{
+   "name":"Pagamentos",
+   "icon":"src\/icons_new\/money.png",
+   "iconCls":"money_32",
+   "id":"pagamentos",
+   "width":"95%",
+   "height":"95%",
+   "href":"modulos\/pagamentos\/index.html"
+}

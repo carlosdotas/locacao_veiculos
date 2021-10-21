@@ -1,0 +1,140 @@
+<div class="easyui-layout" fit="true">
+    <div data-options="region:'north'" style=" padding: 3px; height:38px;background: #eee;" >
+		<!--<a href="javascript:void(0)" class="easyui-menubutton" data-options="plain:false,menu:'#mm'">Load</a>-->
+		<select id="load_relatorios" class="easyui-combobox" buttonIcon="icon-remove" style="width:200px;"></select>		
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#pg').pivotgrid('layout')">Layout</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#pg').pivotgrid('toExcel','relatorio.xls')">Excel</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#pg').pivotgrid('print','Relatório')">Imprimir</a>
+		
+    </div>
+    <div data-options="region:'center'" >
+    	<table id="pg" ></table>
+    </div>
+</div>
+
+
+	<script type="text/javascript">
+		$('#load_relatorios').combobox({
+			onClickButton:function(){
+				$.messager.confirm('Confirme', 'Tem certeza que deseja excluir esse Relatório?', function(r){
+					if (r){				
+						var getValue = $('#load_relatorios').combobox('getValue');
+						var relatorios = JSON.parse(localStorage.getItem('relatorios'));
+						var save = []
+						$.each(relatorios, function( index, value ){
+							if(value.name!=getValue){
+								save.push(value);
+							};
+						});
+						localStorage.setItem('relatorios', JSON.stringify(save));
+						$('#load_relatorios').html('');
+						$.each(save, function( index, value ) {	
+							$('#load_relatorios').append(`<option value="${value.name}">${value.name}</option>`);						
+						});	
+						$('#load_relatorios').combobox()	
+
+					}
+				});
+
+			},
+			onChange:function(val){
+				$.each($('#pg').pivotgrid('saves'), function( index, value ) {
+					if(value.name==val){
+						var getValue = $('#load_relatorios').combobox('getValue');
+						$('#pg').pivotgrid({
+							pivot:{
+								rows:value.rows,
+								filters:value.filters,
+								columns:value.columns,
+								values:value.values,
+			                    aggregate: {
+			                        column: {
+			                            field: '_total',
+			                            title: 'Total',
+			                            width: 100,
+			                            align: 'right'
+			                        },
+			                        footer: {
+			                            frozenColumnTitle: 'Total'
+			                        }
+			                    }
+							},
+							onLoadSuccess:function(){
+								$('#load_relatorios').combobox('select',getValue);
+							}
+						});
+						
+					}
+				});
+				
+			}
+		})
+	</script>
+
+
+	
+
+	<style type="text/css">
+		.icon-load{
+			background:url('load.png') no-repeat center center;
+		}
+		.icon-layout{
+			background:url('layout.png') no-repeat center center;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			load1({
+					rows:['data_saida','contrato_id'],
+					filters:['data_saida'],
+					columns:['veiculo_placa'],
+					values:[
+						{field:'subtotal',op:'sum'},
+						//{field:'Discount',op:'sum'}
+					],
+                    aggregate: {
+                        column: {
+                            field: '_total',
+                            title: 'Total',
+                            width: 100,
+                            align: 'right'
+                        },
+                        footer: {
+                            frozenColumnTitle: 'Total'
+                        }
+                    }
+
+				});
+		});
+
+		function load1(pivot){
+			$('#pg').pivotgrid({
+				url:'server.php?op=relatorios_list',
+				method:'get',
+				fit:true,
+				pivot:pivot,
+				frozenColumnTitle:'<span style="font-weight:bold">Relatório</span>',
+				valuePrecision:2,
+				valueStyler:function(value,row,index){
+					if (/receber$/.test(this.field) && value>100 && value<500){
+						//return 'background:red;color:#fff'
+					}
+				},
+				onLoadSuccess:function(){	
+					$('#load_relatorios').html('');				
+					$.each($('#pg').pivotgrid('saves'), function( index, value ) {
+						$('#load_relatorios').append(`<option value="${value.name}">${value.name}</option>`);
+					});
+					$('#load_relatorios').combobox()
+				},
+				onSaveRelatorios:function(){
+					$('#load_relatorios').html('');
+					$.each($('#pg').pivotgrid('saves'), function( index, value ) {	
+						$('#load_relatorios').append(`<option value="${value.name}">${value.name}</option>`);						
+					});	
+					$('#load_relatorios').combobox()			
+				}
+			})
+			
+		}
+	</script>

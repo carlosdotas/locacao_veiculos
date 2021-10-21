@@ -1,0 +1,9 @@
+{
+   "name":"Relat\u00f3tios",
+   "icon":"src\/icons_new\/report.png",
+   "iconCls":"report_32",
+   "id":"relatorios",
+   "width":"95%",
+   "height":"95%",
+   "href":"modulos\/relatorios\/index.html"
+}

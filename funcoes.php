@@ -10,6 +10,7 @@ include_once('config.php');
 
 //////////////////////////////////////////////////
 function conectarMysql(){
+  if($_SESSION[DB_PORT])$port = $_SESSION[DB_PORT];
   # PHP 7
   $conexao = mysqli_connect($_SESSION[DB_HOST],$_SESSION[DB_LOGIN],$_SESSION[DB_SENHA]);
   

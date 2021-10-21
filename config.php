@@ -26,7 +26,8 @@ session_start();
 $_SESSION['DB_HOST'] 	  = 'localhost';
 $_SESSION['DB_LOGIN'] 	  = 'root';
 $_SESSION['DB_SENHA'] 	  = '';
-$_SESSION['DB_NAME'] 	  = 'locacao_viculos2';
+$_SESSION['DB_NAME'] 	  = 'locacao_viculos';
+//$_SESSION['DB_PORT']      = 3306;
 $_SERVER['url']          = 'http://localhost/locacao_veiculos';
 $_SERVER['root']         = 'C:\xampp\htdocs\locacao_veiculos';
 

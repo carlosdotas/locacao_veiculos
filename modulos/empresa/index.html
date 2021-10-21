@@ -21,12 +21,11 @@
         <input type="hidden" name="empresa_id" value="1">
 
         <div class="dialog_buttons">
-            <a href="#" onclick="dialog_close('')" class="easyui-linkbutton" iconCls="cancel_32">Fechar</a>    
             <a onclick="dialog_save(1,'#form_empresa','#datagrid_empresas')" class="easyui-linkbutton" iconCls="diskette_32">Salvar</a>
         </div>        
     </form>                 
 </div>
 
 <script type="text/javascript">    
-    $('#form_empresa').form('load','server.php?buscar_mysql=empresa&col=empresa_id&ref=1');
+    $('#form_empresa').form('load','server.php?buscar_mysql=empresa&empresa_id=1');
 </script>

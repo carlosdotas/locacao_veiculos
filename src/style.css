@@ -46,3 +46,26 @@ fieldset{
 .input_negrito input{
 	font-weight: bold;
 }
+.desktop-app-name{
+	font-size: 12px!important;
+	text-shadow: 0.1em 0.1em 0.10em #000!important;
+}
+.datagrid-row-over{
+	background-color: #eee!important;
+	color: #666;
+	font-weight: bold;
+}
+.datagrid-row{
+	background-color: #fff;
+}
+.datagrid-row-selected{
+	background-color: #ddd!important;
+	font-weight: bold;
+	color: #444;
+}
+.datagrid-body{
+	background-color: #eee;
+}
+.desktop-timer{
+	text-shadow: 0.1em 0.1em 0.10em #000!important;
+}

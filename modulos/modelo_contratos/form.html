@@ -1,4 +1,6 @@
 <meta title=" ADICIONAR MODELOS DE CONTRATOS" iconCls="add_32" width="90%" height="90%">
+
+
 <div id='layout_documento' class="easyui-layout" fit="true">
     <form id="form_modelo_contratos" action="server.php"  method="post">
         <div class="dialog_form" data-options="region:'north'" style="overflow: none;">
@@ -8,20 +10,18 @@
         </div>
         <div data-options="region:'center'" >
             <div class="easyui-panel" id="layout_center" fit="true">
-                <textarea id="editor1" class="modelo_documentos" name="contrato"></textarea>
+                <textarea id="editor" class="modelo_documentos" style="height:400px" name="contrato"></textarea>
             </div>
         </div>
         <input type="hidden" name="salvar" value="modelo_contratos">
         <input type="hidden" name="modelo_contratos_id">        
     </form>
 </div>
+
 <script type="text/javascript">    
     $( document ).ready(function() {
-        var layout_documento = $('#layout_center').panel()[0].clientHeight;
-
-        CKEDITOR.replace('editor1', {
-          language: 'pt-BR',
-          height:layout_documento+'px'
-        });
+            const editor = Jodit.make('#editor' ,{
+                "height": 450
+            });
     });
 </script>

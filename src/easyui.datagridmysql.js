@@ -5,7 +5,7 @@
  *		
 		$('.datagridMysql').datagridMysql({
 			table:'marcas',
-			url:'server.php?json=marcas',
+			url:'${urlSever}?json=marcas',
 			onSave:function(){ 
 				alert()
 			},
@@ -38,7 +38,7 @@
 		var opts = $.data(target, 'datagridMysql').options;
 		var ids='dialog_'+getRandomInt(10000, 99999);
 		
-		$.getJSON( 'server.php?json='+opts.table, function( data ) {	
+		$.getJSON( `${urlSever}?json=`+opts.table, function( data ) {	
 
 			var columns = []	
 			//$.each(Object.keys(data.rows[0]), function( index, value ) {
@@ -78,7 +78,7 @@
 
 
 			$(target).datagrid($.extend({}, opts, {
-				//url:'server.php?json='+opts.table,
+				//url:'${urlSever}?json='+opts.table,
 				onLoadSuccess:function(data){
 					var server = '';
 
@@ -88,7 +88,7 @@
 					$('.easyui-linkbutton').linkbutton()
 					$('.btn_edit_'+ids).click(function(){
 						if(!opts.server){
-							server = `server.php?buscar_mysql=${opts.table}&${opts.table}_id=${$(this).attr(opts.table+'_id')}`;
+							server = `${urlSever}?buscar_mysql=${opts.table}&${opts.table}_id=${$(this).attr(opts.table+'_id')}`;
 						}else{
 							server = opts.server+$(this).attr(opts.table+'_id');
 						}						
@@ -111,7 +111,7 @@
 						$.messager.confirm('Confirme',`Tem certeza que deseja exluir o Item ${$(this).attr(opts.table+'_id')} ?`,function(r){
 						    if (r){
 						    	$.messager.progress();
-								$.get( `server.php?exclui_mysql=${opts.table}&id=${$(btn_del).attr(opts.table+'_id')}`, function( data ) {
+								$.get( `${urlSever}?exclui_mysql=${opts.table}&id=${$(btn_del).attr(opts.table+'_id')}`, function( data ) {
 									$.messager.progress('close');
 									if(opts.onDel){
 										opts.onDel($(btn_del).attr(opts.table+'_id'))
@@ -130,7 +130,7 @@
 					text:'Adicionar',
 					handler: function(){
 						if(!opts.server){
-							server = `server.php?buscar_mysql=${opts.table}&${opts.table}_id=${$(this).attr(opts.table+'_id')}`;
+							server = `${urlSever}?buscar_mysql=${opts.table}&${opts.table}_id=${$(this).attr(opts.table+'_id')}`;
 						}else{
 							server = opts.server+$(this).attr(opts.table+'_id');
 						}						

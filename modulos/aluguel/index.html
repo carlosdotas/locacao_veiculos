@@ -9,7 +9,7 @@
 </div>
 <script type="text/javascript">
 
-	$.getJSON( "server.php?json=modelo_contratos", function( data ) {
+	$.getJSON( `${urlSever}?json=modelo_contratos`, function( data ) {
 		$.each(data.rows, function( index, value ) {
 			$('#menu').append(`<div data-options="iconCls:'printer_32'" id="${value.modelo_contratos_id}">${value.nome_contrato}</div>`);
 		});
@@ -24,9 +24,9 @@
 
 	$('#datagrid_aluguel').datagridMysql({
 		table:'aluguel',
-		url:'server.php?op=aluguel_list',
+		url:`${urlSever}?op=aluguel_list`,
 		form:"modulos/aluguel/form.html",
-		server:'server.php?op=aluguel_get&id=',
+		server:`${urlSever}?op=aluguel_get&id=`,
 		columns:[[
 			{field:'action',title:'#',
 	    		width:108,
@@ -72,7 +72,7 @@
 
 /*
 	$('.datagrid_aluguel').datagrid({
-	    url:'server.php?op=aluguel_list',
+	    url:'${urlSever}?op=aluguel_list',
 	    form:"modulos/aluguel/form.html",
 	    id:'datagrid_aluguel',
 	    tableMysql:'aluguel',    
